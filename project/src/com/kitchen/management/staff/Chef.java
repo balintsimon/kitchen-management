@@ -1,14 +1,13 @@
 package com.kitchen.management.staff;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 public class Chef extends Cooker {
 
     @Override
     public String cook() {
-        ArrayList<String> shoutWord = new ArrayList<String>();
+        ArrayList<String> shoutWord = new ArrayList<>();
         shoutWord.add("carrot");
         shoutWord.add("potato");
         shoutWord.add("meat");

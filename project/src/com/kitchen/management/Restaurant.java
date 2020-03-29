@@ -3,26 +3,23 @@ import com.kitchen.management.staff.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Restaurant {
-    ArrayList<Staff> staff = new ArrayList<Staff>();
-    ArrayList<Cooker> cookers = new ArrayList<Cooker>();
-    ArrayList<Helper> helpers = new ArrayList<Helper>();
+    ArrayList<Cooker> cookers = new ArrayList<>();
+    ArrayList<Helper> helpers = new ArrayList<>();
 
     protected void hireStaff(int numberOfChefs, int numberOfCooks, int numberOfHelpers) {
         for (int i = 0; i < numberOfChefs; i++) {
             Staff chef = new Chef("chef " + i, 1980 + i, 20);
-            staff.add(chef);
             cookers.add((Chef) chef);
         }
         for (int i = 0; i < numberOfCooks; i++) {
             Staff cook = new Cook("cook " + i, 1980 + i, 15);
-            staff.add(cook);
             cookers.add((Cook) cook);
         }
         for (int i = 0; i < numberOfHelpers; i++) {
             Staff helper = new Helper("helper " + i, 1980 + i, 10);
-            staff.add(helper);
             helpers.add((Helper) helper);
         }
     }
@@ -41,6 +38,9 @@ public class Restaurant {
                     return false;
                 }
             }
+            if (!cook.isKnifeReceived()) {
+                receiveKnife(cook);
+            }
         }
         return weHaveEnoughIngredients;
     }
@@ -57,4 +57,13 @@ public class Restaurant {
         return false;
     }
 
+    protected void receiveKnife(Cooker cook) {
+        Random rand = new Random();
+        int chance = rand.nextInt(100)+1;
+
+        if (chance > 70) {
+            cook.setKnifeReceived();
+            System.out.println(cook.getName() + " received a knife.");
+        }
+    }
 }

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Helper extends Staff {
-    HashMap<String, Integer> ingredients = new HashMap<String, Integer>();
+    HashMap<String, Integer> ingredients = new HashMap<>();
 
     public Helper(String name, int birthDate, int salary) {
         super(name, birthDate, salary);
